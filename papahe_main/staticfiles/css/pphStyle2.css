@@ -1,0 +1,15 @@
+html, body {
+    height: 100%;
+    margin: 0;
+
+}
+
+body{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom,rgb(255, 243, 221) 1%, rgb(255, 233, 208) 10%,rgb(248, 211, 169) 50%, rgb(255, 193, 126) 100%);
+    margin: 0;
+}

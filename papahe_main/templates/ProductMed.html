@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos Naturales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/pphMedicinal.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="catalog-title">
+            <a href="{% url 'seleccion' %}">
+            CATÁLOGO DE<br> MEDICINA NATURAL
+        </a>
+        </div>
+        <img src="{% static 'img/Papahe/LOGO-DEF2023-02.png' %}" class="pphLogoMed" alt="Logo">
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th style="width: 450px;">
+
+                    <div id="search-container" class="mx-1">
+                        <form method="get" action="{% url 'medicinal' %}">
+                            <input type="text" placeholder="Buscar productos" id="search-input" name="search"
+                                value="{{ search_term }}">
+                            <button style="margin-bottom: 6px ;" type="submit" class="btn btn-outline-dark" >
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                </th>
+                <th>
+
+                </th>
+
+
+            </tr>
+
+        </thead>
+        <tbody>
+            <td>
+                <h3>CATEGORIAS</h3>
+                <div id="containerCategorias">
+                    <div class="categoria-container">
+                        <a href="{% url 'medicinalCategoria' categoria='BAJAR DE PESO' %}" class="categorias">
+                        BAJAR DE PESO
+                        </a>
+                        <img class="categorias-img" src="{% static 'img/Papahe/iconos/bajarpeso.png'%}" alt="">
+                    </div>
+                
+                    <div class="categoria-container">
+                        <a href="{% url 'medicinalCategoria' categoria='RESFRIADO' %}" class="categorias">
+                        RESFRIADO
+                        </a>
+                        <img class="categorias-img" src="{% static 'img/Papahe/iconos/resfriado.png'%}" alt="">
+                    </div>
+                
+                    <div class="categoria-container">
+                        <a href="{% url 'medicinalCategoria' categoria='INFECCIÓN URINARIA' %}" class="categorias">
+                        INFECCIÓN URINARIA
+                        </a>
+                        <img class="categorias-img" src="{% static 'img/Papahe/iconos/infeccionUrinaria.png' %}">
+                    </div>
+                
+                    <div class="categoria-container">
+                        <a href="{% url 'medicinalCategoria' categoria='MULTIVITAMÍNICOS' %}" class="categorias">
+                        MULTIVITAMÍNICOS
+                        </a>
+                        <img class="categorias-img" src="{% static 'img/Papahe/iconos/multivitaminico.png'%}" alt="">
+                    </div>
+                
+                    <div class="categoria-container">
+                        <a href="{% url 'medicinalCategoria' categoria='ENERGIZANTES' %}" class="categorias">
+                        ENERGIZANTES
+                        </a>
+                        <img class="categorias-img" src="{% static 'img/Papahe/iconos/energizante.png'%}" alt="">
+                    </div>
+                </div>
+
+
+            </td>
+
+            <td>
+                {% if medicinal %}
+                <div class="product-list">
+                    {% for m in medicinal %}
+                    <div class="product-item">
+                        <a href="{% url 'productInfo' m.id %}">
+                            <img src="{{ m.imagen.url }}" alt="{{ m.nombre }}" id="catalogoImg" width="200" height="200">
+                        </a>
+                            <p class="text-center" id="medNombre">{{ m.nombre }}</p>
+
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <div class="alert alert-warning" role="alert">No se encontraron productos medicinales</div>
+                {% endif %}
+            </td>
+    
+        </tbody>
+    </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+install python
+install pip
+
+pip install django
+
+pip install mysqlserver
+
+pip install pillow
+
+levantar xampp Apache y Mysql
+

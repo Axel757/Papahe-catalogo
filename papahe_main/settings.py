@@ -23,7 +23,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = 'django-insecure-)uru)-17&#c2zg0%^ezq4!*r!gkv+iye&x=(g7_#(j9-byz8&$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -146,7 +146,7 @@ STATIC_TMP = os.path.join(BASE_DIR, 'static')
 os.makedirs(STATIC_TMP, exist_ok=True)
 os.makedirs(STATIC_ROOT, exist_ok=True)
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFileStorage'
 
 
 # Default primary key field type

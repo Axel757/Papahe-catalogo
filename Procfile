@@ -1,0 +1,1 @@
+web: gunicorn papahe_main.wsgi --log-file -

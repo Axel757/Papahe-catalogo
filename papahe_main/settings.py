@@ -29,7 +29,7 @@ if os.environ.get('ON_HEROKU', '0') == '0':
 else:
     DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition

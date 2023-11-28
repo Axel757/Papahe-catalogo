@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2023 a las 05:19:38
+-- Tiempo de generación: 22-11-2023 a las 13:31:02
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -129,7 +129,11 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (65, 'Can add product med', 17, 'add_productmed'),
 (66, 'Can change product med', 17, 'change_productmed'),
 (67, 'Can delete product med', 17, 'delete_productmed'),
-(68, 'Can view product med', 17, 'view_productmed');
+(68, 'Can view product med', 17, 'view_productmed'),
+(69, 'Can add user', 18, 'add_customuser'),
+(70, 'Can change user', 18, 'change_customuser'),
+(71, 'Can delete user', 18, 'delete_customuser'),
+(72, 'Can view user', 18, 'view_customuser');
 
 -- --------------------------------------------------------
 
@@ -156,11 +160,9 @@ CREATE TABLE `auth_user` (
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$600000$yZYaHEKsSf0ckDlqF2jgna$jHXvca2Uw3tpc0KUpvJZYzuxHiGf70skIMtq+BYhzlw=', '2023-11-17 00:07:10.642865', 1, 'axelm', '', '', 'axelmx7@outlook.com', 1, 1, '2023-10-12 17:25:56.953525'),
-(2, 'pbkdf2_sha256$600000$SYPOsWfYjlnr1sAFUQYcu2$UiCEVNuHfYq9HZJB+WJI5/eaQeeD28Tz5p3uqz9Qie4=', NULL, 1, 'loto', '', '', 'axelmx7@outlook.com', 1, 1, '2023-11-09 00:35:51.003001'),
-(3, 'pbkdf2_sha256$600000$KKB6llUcWfNQdZKqNBwWN4$w45Ibx0WGmhtl4MWAOcxaBZruKTSzrtiXipjCdP0jlw=', NULL, 1, 'Lelis', '', '', 'axelmx7@outlook.com', 1, 1, '2023-11-09 00:37:51.848866'),
-(4, 'pbkdf2_sha256$600000$Zkl3lP2kipopGUuoXlmSYe$B2P2ltyoR5uFy+63+XkUz5iu3Xu3YpmstpCx1IdAVjc=', '2023-11-16 20:58:44.019837', 1, 'Axel', '', '', '', 1, 1, '2023-11-09 00:40:01.184152'),
-(5, 'pbkdf2_sha256$600000$6nOUpeW1Al4bx7q7XgKjVB$8epU9iveUcJKQcCZObY78pPYhyh8Av4ww7OnlFSB4yQ=', '2023-11-09 21:56:11.033904', 1, 'Cecilia_Martinez', '', '', 'cecilia.martinez@papahe.cl', 1, 1, '2023-11-09 13:37:41.863965');
+(1, 'pbkdf2_sha256$600000$yZYaHEKsSf0ckDlqF2jgna$jHXvca2Uw3tpc0KUpvJZYzuxHiGf70skIMtq+BYhzlw=', '2023-11-21 13:13:37.278745', 1, 'axelm', '', '', 'axelmx7@outlook.com', 1, 1, '2023-10-12 17:25:56.953525'),
+(5, 'pbkdf2_sha256$600000$6nOUpeW1Al4bx7q7XgKjVB$8epU9iveUcJKQcCZObY78pPYhyh8Av4ww7OnlFSB4yQ=', '2023-11-09 21:56:11.033904', 1, 'Cecilia_Martinez', '', '', 'cecilia.martinez@papahe.cl', 1, 1, '2023-11-09 13:37:41.863965'),
+(6, 'pbkdf2_sha256$600000$3sLdlbrFihbbVHrfT6QMrw$7YjYU1G+JHhsGI09Lyo6mIXtJWQdEGOkkqLORBSluDo=', NULL, 1, 'loto', '', '', '', 1, 1, '2023-11-21 02:40:10.435456');
 
 -- --------------------------------------------------------
 
@@ -311,6 +313,7 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (11, 'item22App', 'productmed'),
 (12, 'item22App', 'user'),
 (15, 'papahe_app', 'catalogo'),
+(18, 'papahe_app', 'customuser'),
 (16, 'papahe_app', 'productgas'),
 (17, 'papahe_app', 'productmed'),
 (14, 'papahe_app', 'user'),
@@ -370,7 +373,11 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (34, 'papahe_app', '0002_delete_user_alter_productgas_nombre_and_more', '2023-11-09 20:51:02.614002'),
 (35, 'papahe_app', '0003_productmed_categoria', '2023-11-16 01:29:29.397601'),
 (36, 'papahe_app', '0004_alter_productmed_nombre', '2023-11-16 01:31:26.306416'),
-(37, 'papahe_app', '0005_alter_productmed_options', '2023-11-17 00:40:27.112339');
+(37, 'papahe_app', '0005_alter_productmed_options', '2023-11-17 00:40:27.112339'),
+(38, 'papahe_app', '0006_alter_productmed_categoria', '2023-11-20 17:13:13.925249'),
+(39, 'papahe_app', '0007_alter_productmed_categoria', '2023-11-20 19:06:21.284801'),
+(40, 'papahe_app', '0008_customuser', '2023-11-21 00:27:17.715444'),
+(41, 'papahe_app', '0009_alter_productmed_posologia_and_more', '2023-11-22 02:10:52.217355');
 
 -- --------------------------------------------------------
 
@@ -390,11 +397,8 @@ CREATE TABLE `django_session` (
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('4ekskbipz95cnx8ltffyfp67gu5di193', '.eJxVjEEOwiAQRe_C2hCQMoBL956BzAwgVUOT0q6Md7dNutDtf-_9t4i4LjWuPc9xTOIitDj9boT8zG0H6YHtPkme2jKPJHdFHrTL25Ty63q4fwcVe93qoriAsZZRgyENA2i31eFcCDIHyhAC2AEBXCIwxjtSTIiqFDI-ePH5AuwPOD4:1r0tOf:f2l1Nlbi5XXKs9wLacMaFEwHxf3DzHwBtLfd3mr4FN4', '2023-11-23 00:59:49.103310'),
-('ftagob69a82mu7ntsg0gtc1gf1fraipj', '.eJxVjEEOwiAQRe_C2hCEQYpL956BzDBTqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVWR3X43QjzQ-oG-I711nRudZkn0puid9r1tbE8L7v7d1Cwl28dAzuIwUJG6yN6J8gWiSgMDtlFIvAexlHEZLKDByMRT8FEMC47EfX-AOxVODE:1qrmN2:UtPHQ2-ONnKx-klHyx6c6TdbLexno1KIX1sWmiDN_kQ', '2023-10-28 21:40:28.383854'),
-('gcwqm29zno1nkijt79r8k8ayb1idwtfg', '.eJxVjEEOwiAQRe_C2hCEQYpL956BzDBTqRpISrsy3l2bdKHb_977L5VwXUpau8xpYnVWR3X43QjzQ-oG-I711nRudZkn0puid9r1tbE8L7v7d1Cwl28dAzuIwUJG6yN6J8gWiSgMDtlFIvAexlHEZLKDByMRT8FEMC47EfX-AOxVODE:1qqzS7:0xVYSYmHAtRBg-U34bhoFb6WYY2obQMlfnW5JxwmO6o', '2023-10-26 17:26:27.198215'),
 ('ka9v2fy1lbnaieb0yyb4ptd53poto0dc', '.eJxVjEEOwiAQRe_C2hCQMoBL956BzAwgVUOT0q6Md7dNutDtf-_9t4i4LjWuPc9xTOIitDj9boT8zG0H6YHtPkme2jKPJHdFHrTL25Ty63q4fwcVe93qoriAsZZRgyENA2i31eFcCDIHyhAC2AEBXCIwxjtSTIiqFDI-ePH5AuwPOD4:1r3XCJ:ntd1QzAc3AVdFgnYnrc-J9o_tnk_VfRViEPtorfsdQc', '2023-11-30 07:53:59.357645'),
 ('nqh99tjfdiikitjj507nkdmmoo6kgce7', '.eJxVjEEOwiAQRe_C2hCQMoBL956BzAwgVUOT0q6Md7dNutDtf-_9t4i4LjWuPc9xTOIitDj9boT8zG0H6YHtPkme2jKPJHdFHrTL25Ty63q4fwcVe93qoriAsZZRgyENA2i31eFcCDIHyhAC2AEBXCIwxjtSTIiqFDI-ePH5AuwPOD4:1r0xBv:pylrQ3nTCKh_UBtLPUS4yXev6EBtJdfBKH7SrPJqk-A', '2023-11-23 05:02:55.912774'),
-('uosztmn3pqt44j0zlt5dre0els8pruyn', '.eJxVjEEOwiAQRe_C2hCQMoBL956BzAwgVUOT0q6Md7dNutDtf-_9t4i4LjWuPc9xTOIitDj9boT8zG0H6YHtPkme2jKPJHdFHrTL25Ty63q4fwcVe93qoriAsZZRgyENA2i31eFcCDIHyhAC2AEBXCIwxjtSTIiqFDI-ePH5AuwPOD4:1r3mO6:0YucfMwQtH_8Vb9ioa9eAOZEF8zDQNZiz9FcVeiicy0', '2023-12-01 00:07:10.691735'),
 ('x3jr4n5m3g4npoory9yy679fkb7mb8qn', '.eJxVjEEOgjAQRe_StWla7NCpS_ecoZlhpoIaSCisjHdXEha6_e-9_zKZtnXIW9Ulj2IuBszpd2PqHzrtQO403Wbbz9O6jGx3xR602m4WfV4P9-9goDp86xQDMlNsEYvngO6s0DccBSiR4yLOuzbEElKQlIS0gMcADry2oA2a9wff1zeK:1r1D0V:HiflpBUvd0sMNqS6sLSTv5_l-qzAyG6Yw5wscKHExRU', '2023-11-23 21:56:11.085766');
 
 -- --------------------------------------------------------
@@ -417,6 +421,61 @@ CREATE TABLE `papahe_app_catalogo` (
 INSERT INTO `papahe_app_catalogo` (`id`, `catalogoType`, `productGas_id`, `productMed_id`) VALUES
 (1, 0, 1, 1),
 (2, 1, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `papahe_app_customuser`
+--
+
+CREATE TABLE `papahe_app_customuser` (
+  `id` bigint(20) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `last_login` datetime(6) DEFAULT NULL,
+  `is_superuser` tinyint(1) NOT NULL,
+  `first_name` varchar(150) NOT NULL,
+  `last_name` varchar(150) NOT NULL,
+  `email` varchar(254) NOT NULL,
+  `is_staff` tinyint(1) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  `date_joined` datetime(6) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `tipo_usuario` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `papahe_app_customuser`
+--
+
+INSERT INTO `papahe_app_customuser` (`id`, `password`, `last_login`, `is_superuser`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`, `username`, `tipo_usuario`) VALUES
+(2, 'pbkdf2_sha256$600000$pT2427tBp5ER8JBJkZmg0a$l4PYpc/pAb5bYO/RnTu+bo9U8AbMBqrJIZ818UlNE1Q=', '2023-11-21 15:16:07.080796', 0, '', '', '', 0, 1, '2023-11-21 00:56:06.917752', 'Axel', 'vendedor'),
+(12, 'pbkdf2_sha256$600000$0GzUSIHfpIMcYGduakUzcv$jt3lUG5eCXM1a4YXBxR2eGSgvR6r1kx5OPMA1J2QZ1U=', '2023-11-21 14:17:27.399553', 1, '', '', '', 1, 1, '2023-11-21 13:23:01.348736', 'Ñore', 'administrador'),
+(13, 'pbkdf2_sha256$600000$N36VQM00XT44O12fu2UnGD$DStT3yrb+wF9/pOp51j4GlN1Os4MOx5D+n4Nk1EM5q8=', '2023-11-21 14:28:08.098736', 1, '', '', '', 1, 1, '2023-11-21 14:25:39.056646', 'Camilo', 'administrador'),
+(14, 'pbkdf2_sha256$600000$XO3YPdU6FsEKz38hXrJOh0$A3W812awBK45XgWF035AIjW9iL4bKHRFU3Xyc5b5o6k=', '2023-11-22 03:04:32.079921', 1, '', '', '', 1, 1, '2023-11-21 15:38:10.050099', 'axelm', 'administrador');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `papahe_app_customuser_groups`
+--
+
+CREATE TABLE `papahe_app_customuser_groups` (
+  `id` bigint(20) NOT NULL,
+  `customuser_id` bigint(20) NOT NULL,
+  `group_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `papahe_app_customuser_user_permissions`
+--
+
+CREATE TABLE `papahe_app_customuser_user_permissions` (
+  `id` bigint(20) NOT NULL,
+  `customuser_id` bigint(20) NOT NULL,
+  `permission_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -453,8 +512,8 @@ CREATE TABLE `papahe_app_productmed` (
   `nombre` varchar(100) NOT NULL,
   `imagen` varchar(100) NOT NULL,
   `farmacia` varchar(30) NOT NULL,
-  `posologia` varchar(50) NOT NULL,
-  `presentacion` varchar(25) NOT NULL,
+  `posologia` varchar(256) NOT NULL,
+  `presentacion` varchar(50) NOT NULL,
   `ingredientes` varchar(256) NOT NULL,
   `descripcion` longtext NOT NULL,
   `categoria` varchar(50) NOT NULL
@@ -466,13 +525,9 @@ CREATE TABLE `papahe_app_productmed` (
 
 INSERT INTO `papahe_app_productmed` (`id`, `nombre`, `imagen`, `farmacia`, `posologia`, `presentacion`, `ingredientes`, `descripcion`, `categoria`) VALUES
 (1, 'CEREBRUM JARABE', 'static/img/Papahe/productos_medicinales/cerebrum_2afmVk3.PNG', 'AURA VITALIS', '1 Cucharada tres veces al dia', 'Botella 200gr', 'Miel de abejas, Jarabe de Maíz, Lecitina de Soya, Avena, Alfalfa, Propilenglicol, Acido Ascórbico, Acido Cítrico', 'Entrega energía a deportistas, estudiantes o personas cuyas actividades tiendan a cansarlos mental o físicamente. Mejora el funcionamiento del cerebro y facilita la absorción de algunas vitaminas del complejo B y de la vitamina A. Mejora los procesos de aprendizaje, e incrementa la memoria. Ayuda a mejorar la capacidad intelectual, así como la agilidad mental, importante en la formación y mantenimiento de neurotransmisores cerebrales entre las neuronas.', 'CONCENTRACIÓN'),
-(2, 'CALODREN', 'static/img/Papahe/productos_medicinales/Calodren_yX52WPe.PNG', 'MADRE TIERRA', '1 cápsula minutos antes de tus comidas principales', '30 capsulas', 'Chitosán, Glucomanan.', 'Dispositivo Médico formulado para captar y eliminar las grasas de la dieta diaria. Debido\r\na su alta densidad y rápida solubilidad, se adhiere a la grasa de la comida de manera efectiva siendo\r\nsólo necesario tomarlo minutos antes de tu comida principal. Los beneficios son inmediatos.', 'BAJAR DE PESO'),
 (3, 'TÉ MATCHA', 'static/img/Papahe/productos_medicinales/teMatcha_p2BJIE3.PNG', 'NATURALHERBAL', '1 cucharadita de té para una taza. Toma 2-3 tazas', 'Frasco 70grs', 'Té Matcha.', 'Ayuda en la pérdida de peso ya que es un un quemador de grasa, aumenta el metabolismo y\r\nquema calorías. Reduce el colesterol y azúcar en la sangre y no eleva los niveles de insulina ni la presión\r\narterial. Poderosa fuente de proteínas, nutrientes y antioxidantes. Además, cuenta con un polifenol denominado EGCG que ayuda a reducir el crecimiento de las células cancerígenas y acelera el metabolismo.\r\nTiene el triple de cafeína que el té convencional, motivo por el que es una gran elección para consumir por\r\nlas mañanas como sustitutivo del café, ya que proporciona un efecto muy similar, siendo más sano.', 'BAJAR DE PESO'),
 (4, 'FAT BINDER 60/90', 'static/img/Papahe/productos_medicinales/fatBinder_vBc8mQz.PNG', 'MADRE TIERRA', '1 capsula antes de las comidas principales.', '60 cápsulas.', 'Chitosan, Esterato de Magnesio', '60/90 Fat Binder la nueva fórmula y dispositivo médico de alta pureza y biodisponibilidad\r\npara usarlo en programas de control del peso por medio de la reducción de la absorción de calorías y\r\ngrasas, en forma segura y 100 % natural.', 'BAJAR DE PESO'),
-(5, 'LECITINA SOYA POTENCIADA', 'static/img/Papahe/productos_medicinales/lecitinaSoya_mk2Fcsh.PNG', 'AURA VITALIS', '2 cápsulas diarias.', '60 cápsulas.', 'Quitosano, Aloe Vera, Centella Asiática, Almidón.', 'Fibra natural de reconocida utilidad y efectividad en el tratamiento de la celulitis, ayuda a\r\ninhibir el apetito y quemar grasas acumuladas, además de propiedades antiinflamatorias y regeneradoras\r\nde tejido.', 'BAJAR DE PESO'),
-(6, '60/90 - INFUSIÓN ORGÁNICA DETOX', 'static/img/Papahe/productos_medicinales/infunsionorganicadetox_itWVMmf.PNG', 'MADRE TIERRA', 'Infusionar 1 cucharada sopera por litro de agua he', 'Envases de 100 g', 'Peumo, Menta, Marrubio, Alejandría, Yerba de la Plata, Sen, Manzanilla, Hinojo, Culén', '60/90 Infusión de hierbas Detox para depurar el organismo y complementar con programas de\r\nadelgazamiento o pérdida de peso. Es una mezcla de plantas medicinales especiales para ayudar al consumo\r\nhidrico que requiere nuestro cuerpo cada dia, dándonos los nutrientes necesarios para complementar los tratamientos de adelgazamiento y en personas que deseen tener un control de su peso diariamente.', 'BAJAR DE PESO'),
-(7, 'PROMIEL SPRAY', 'static/img/Papahe/productos_medicinales/promielPNG_PZltwTE.PNG', 'AURA VITALIS', 'Aplicar cada vez que sienta molestias', 'Frasco 30 ml', 'Propóleo, Esencia de miel, Esencia Eucaliptus, Glicerina, Sucralosa, menthol.', 'Estimulante del sistema inmunológico para sentir la garganta fresca y despejada. Coadyuvante en\r\nestados gripales, alivia picazón, ardor y molestias de la garganta.', 'RESFRIADO'),
-(8, 'COLA DE CABALLO', 'static/img/Papahe/productos_medicinales/Cola_de_Caballo.PNG', 'NATURALHERBAL', 'Poner una cucharada en 1 taza y dejar caer el agua', 'bolsa 40 grs.', 'Cola de caballo en hierba.', 'Combate las inflamaciones del tracto urinario, además de ser un importante diurético natural.', 'INFECCION URINARIA');
+(5, 'LECITINA SOYA POTENCIADA', 'static/img/Papahe/productos_medicinales/lecitinaSoya_mk2Fcsh.PNG', 'AURA VITALIS', '2 cápsulas diarias.', '60 cápsulas.', 'Quitosano, Aloe Vera, Centella Asiática, Almidón.', 'Fibra natural de reconocida utilidad y efectividad en el tratamiento de la celulitis, ayuda a\r\ninhibir el apetito y quemar grasas acumuladas, además de propiedades antiinflamatorias y regeneradoras\r\nde tejido.', 'BAJAR DE PESO');
 
 --
 -- Índices para tablas volcadas
@@ -560,6 +615,29 @@ ALTER TABLE `papahe_app_catalogo`
   ADD KEY `papahe_app_catalogo_productMed_id_e4dd2476_fk_papahe_ap` (`productMed_id`);
 
 --
+-- Indices de la tabla `papahe_app_customuser`
+--
+ALTER TABLE `papahe_app_customuser`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indices de la tabla `papahe_app_customuser_groups`
+--
+ALTER TABLE `papahe_app_customuser_groups`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `papahe_app_customuser_gr_customuser_id_group_id_d980581e_uniq` (`customuser_id`,`group_id`),
+  ADD KEY `papahe_app_customuser_groups_group_id_0b237a95_fk_auth_group_id` (`group_id`);
+
+--
+-- Indices de la tabla `papahe_app_customuser_user_permissions`
+--
+ALTER TABLE `papahe_app_customuser_user_permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `papahe_app_customuser_us_customuser_id_permission_9421afe8_uniq` (`customuser_id`,`permission_id`),
+  ADD KEY `papahe_app_customuse_permission_id_abbac513_fk_auth_perm` (`permission_id`);
+
+--
 -- Indices de la tabla `papahe_app_productgas`
 --
 ALTER TABLE `papahe_app_productgas`
@@ -591,13 +669,13 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT de la tabla `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de la tabla `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `auth_user_groups`
@@ -621,19 +699,37 @@ ALTER TABLE `django_admin_log`
 -- AUTO_INCREMENT de la tabla `django_content_type`
 --
 ALTER TABLE `django_content_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `papahe_app_catalogo`
 --
 ALTER TABLE `papahe_app_catalogo`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `papahe_app_customuser`
+--
+ALTER TABLE `papahe_app_customuser`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de la tabla `papahe_app_customuser_groups`
+--
+ALTER TABLE `papahe_app_customuser_groups`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `papahe_app_customuser_user_permissions`
+--
+ALTER TABLE `papahe_app_customuser_user_permissions`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `papahe_app_productgas`
@@ -645,7 +741,7 @@ ALTER TABLE `papahe_app_productgas`
 -- AUTO_INCREMENT de la tabla `papahe_app_productmed`
 --
 ALTER TABLE `papahe_app_productmed`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas
@@ -691,6 +787,20 @@ ALTER TABLE `django_admin_log`
 ALTER TABLE `papahe_app_catalogo`
   ADD CONSTRAINT `papahe_app_catalogo_productGas_id_f5bfcbf1_fk_papahe_ap` FOREIGN KEY (`productGas_id`) REFERENCES `papahe_app_productgas` (`id`),
   ADD CONSTRAINT `papahe_app_catalogo_productMed_id_e4dd2476_fk_papahe_ap` FOREIGN KEY (`productMed_id`) REFERENCES `papahe_app_productmed` (`id`);
+
+--
+-- Filtros para la tabla `papahe_app_customuser_groups`
+--
+ALTER TABLE `papahe_app_customuser_groups`
+  ADD CONSTRAINT `papahe_app_customuse_customuser_id_1650c15f_fk_papahe_ap` FOREIGN KEY (`customuser_id`) REFERENCES `papahe_app_customuser` (`id`),
+  ADD CONSTRAINT `papahe_app_customuser_groups_group_id_0b237a95_fk_auth_group_id` FOREIGN KEY (`group_id`) REFERENCES `auth_group` (`id`);
+
+--
+-- Filtros para la tabla `papahe_app_customuser_user_permissions`
+--
+ALTER TABLE `papahe_app_customuser_user_permissions`
+  ADD CONSTRAINT `papahe_app_customuse_customuser_id_67f079d9_fk_papahe_ap` FOREIGN KEY (`customuser_id`) REFERENCES `papahe_app_customuser` (`id`),
+  ADD CONSTRAINT `papahe_app_customuse_permission_id_abbac513_fk_auth_perm` FOREIGN KEY (`permission_id`) REFERENCES `auth_permission` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

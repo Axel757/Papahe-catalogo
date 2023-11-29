@@ -27,6 +27,6 @@ urlpatterns = [
     #path('', inicioApp, name='inicioApp'),
     path('papahe/registro/', registro2, name='registro2'),
     path('papahe/salir/', salir, name='salir'),
-    path('static/css', include('static/css.urls', namespace='static', use_prefix='True'))
+
     
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

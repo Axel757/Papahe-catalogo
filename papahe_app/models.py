@@ -33,9 +33,7 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.username
           
-          
-          
-          
+
                 
 class ProductMed(models.Model):
     nombre = models.CharField(max_length=100)
@@ -98,8 +96,9 @@ class ProductGas(models.Model):
 
     def __str__(self):
         return self.nombre
-
+          
 class Catalogo(models.Model):
     productMed = models.ForeignKey(ProductMed, on_delete=models.CASCADE)
-    productGas = models.ForeignKey(ProductGas, on_delete=models.CASCADE)
-    catalogoType = models.BooleanField(default=False)
+    ProductGas = models.ForeignKey(ProductGas, on_delete=models.CASCADE)
+    catalogoType = models.BooleanField(default=False)       
+          

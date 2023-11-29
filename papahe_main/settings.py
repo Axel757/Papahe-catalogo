@@ -25,14 +25,19 @@ ON_HEROKU = os.environ.get('ON_HEROKU', None)
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 django_heroku.settings(locals())
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)uru)-17&#c2zg0%^ezq4!*r!gkv+iye&x=(g7_#(j9-byz8&$'
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ["*"]
+DEBUG = 'RENDER' not in os.environ
 
 
+
+ALLOWED_HOSTS = []
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+    
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    
 ]
 
 LOGIN_REDIRECT_URL = 'seleccion'
@@ -85,18 +91,37 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'papahe_main.wsgi.application'
 
+# mysql://root:f164Dfb5g5FHH3bFfg6DcBcGbH-bGC44@roundhouse.proxy.rlwy.net:43411/railway
+# Database RAILWAY SQL 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'railway',
+#         'USER': 'root',
+#         'PASSWORD': 'f164Dfb5g5FHH3bFfg6DcBcGbH-bGC44',
+#         'HOST': 'roundhouse.proxy.rlwy.net',
+#         'PORT': '43411',
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         },
+#         'CONN_MAX_AGE': 600,
+#         'ATOMIC_REQUESTS': True,
+#     }
+# }
 
+#DATABASE POSGRESQL RENDER.COM
 # Database
+# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',
-        'USER': 'root',
-        'PASS': '53ujVHkuhe5DcXZdUZzP',
-        'HOST': 'containers-us-west-182.railway.app',
-        'PORT': '7997'
-    }
+    'default': dj_database_url.config(
+        # Feel free to alter this value to suit your needs.
+        default='postgresql://postgres:postgres@localhost:5432/papahe',
+        conn_max_age=600
+    )
 }
+
+
 
 #User Model Authentication
 AUTH_USER_MODEL = 'papahe_app.CustomUser'
@@ -140,26 +165,19 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-if ON_HEROKU:
-    AWS_ACCESS_KEY_ID = 'AKIAYXZB7CQ5E3CNVN54'
-    AWS_SECRET_ACCESS_KEY = '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'
-    AWS_STORAGE_BUCKET_NAME = 'catalogopapahe'
-    AWS_S3_SIGNATURE_VERSION = 's3v4'
-    AWS_S3_REGION_NAME = 'us-east-2'
-    AWS_S3_FILE_OVERWRITE = False
-    AWS_DEFAULT_ACL =  None
-    AWS_S3_VERIFY = True
-    STATIC_URL = 'https://%s.s3.amazonaws.com/static/' % AWS_STORAGE_BUCKET_NAME
-    MEDIA_URL = 'https://%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
-    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-else:
-    STATIC_URL = '/static/'
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# This setting tells Django at which URL static files are going to be served to the user.
+# Here, they well be accessible at your-domain.onrender.com/static/...
+STATIC_URL = '/static/'
+
+# Following settings only make sense on production and may break development environments.
+if not DEBUG:
+    # Tell Django to copy statics to the `staticfiles` directory
+    # in your application directory on Render.
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATIC_TMP = os.path.join(BASE_DIR, 'static')
-    os.makedirs(STATIC_TMP, exist_ok=True)
-    os.makedirs(STATIC_ROOT, exist_ok=True)
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+    # Turn on WhiteNoise storage backend that takes care of compressing static files
+    # and creating unique names for each version so they can safely be cached forever.
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

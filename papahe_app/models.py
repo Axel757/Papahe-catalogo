@@ -19,6 +19,7 @@ class CustomUserManager(BaseUserManager):
         print('usuario administrador creado')
         return self.create_user(username, password, tipo_usuario, **extra_fields)
 
+
 class CustomUser(AbstractUser):
     TIPO_USUARIO_CHOICES = [
         ('vendedor', 'Vendedor'),
@@ -33,7 +34,6 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.username
           
-
                 
 class ProductMed(models.Model):
     nombre = models.CharField(max_length=100)

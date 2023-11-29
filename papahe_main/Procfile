@@ -1,1 +1,2 @@
-web: gunicorn papahe_main.wsgi --log-file -
+
+web: python manage.py migrate && gunicorn papahe_main.wsgi

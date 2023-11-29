@@ -90,11 +90,9 @@ WSGI_APPLICATION = 'papahe_main.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'railway',
+        'NAME': 'db_papahe',
         'USER': 'root',
-        'PASS': '53ujVHkuhe5DcXZdUZzP',
-        'HOST': 'containers-us-west-182.railway.app',
-        'PORT': '7997'
+        'PASS': ''
     }
 }
 
